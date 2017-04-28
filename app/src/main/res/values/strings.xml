@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ChallengeApp</string>
+
+    <string name="login">Log In</string>
+    <string name="register">Register</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="confirm_password">confirm password</string>
+
+    <string name="username_key">usernameKey</string>
+    <string name="password_key">passwordKey</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
