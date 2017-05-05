@@ -3,12 +3,12 @@
 
     <item
         is-multidex="true"
-        jar="/Users/aterikov/AndroidDev/AndroidStudioProjects/LetsLeaf/tcss450App/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/aterikov/.android/build-cache/93601508188e1223100b9ce6bd2f2ea0d1e24a25/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="/Users/aterikov/AndroidDev/AndroidStudioProjects/LetsLeaf/tcss450App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_22ba3386a2ca71b647f2351a7e53a4766c1220c2/classes.dex" />
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/Users/aterikov/AndroidDev/AndroidStudioProjects/LetsLeaf/tcss450App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b3fa724e820e504b94d6ec8709fa52e7a955257d/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -16,8 +16,17 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="88175b3634abcc19e1bc3cbc511ad33105bf23f6">
+        sha1="5848b5e1fd8efa763eddb9320f255d24781efdd3">
         <dex dex="/Users/aterikov/AndroidDev/AndroidStudioProjects/LetsLeaf/tcss450App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_6ab33f185e093dc771dbaf0695d14ce21bc8feee/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/aterikov/.android/build-cache/6d2fa6688918e77a05f04e9b6bdabefb6aba28cc/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Users/aterikov/AndroidDev/AndroidStudioProjects/LetsLeaf/tcss450App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9f31b3c20577359bd82cca7c40fedaa760493cbf/classes.dex" />
     </item>
 
 </items>

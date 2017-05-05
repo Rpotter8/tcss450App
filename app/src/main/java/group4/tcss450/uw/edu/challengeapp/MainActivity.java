@@ -1,5 +1,6 @@
 package group4.tcss450.uw.edu.challengeapp;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -52,32 +53,15 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onLogInFragmentInteraction(List<String> data) {
 
-        DisplayFragment displayFragment = new DisplayFragment();
-        Bundle args = new Bundle();
-        args.putSerializable(getString(R.string.username_key), data.get(0));
-        args.putSerializable(getString(R.string.password_key), data.get(1));
-        displayFragment.setArguments(args);
-        //displayFragment.updateContent(data.get(0), data.get(1));
-        FragmentTransaction transaction = getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragmentContainer, displayFragment)
-                .addToBackStack(null);
-        transaction.commit();
+        Intent myIntent = new Intent(this, VisionActivity.class);
+        startActivity(myIntent);
     }
 
     @Override
     public void onRegisterFragmentInteraction(List<String> data) {
 
-        DisplayFragment displayFragment = new DisplayFragment();
-        Bundle args = new Bundle();
-        args.putSerializable(getString(R.string.username_key), data.get(0));
-        args.putSerializable(getString(R.string.password_key), data.get(1));
-        displayFragment.setArguments(args);
-        FragmentTransaction transaction = getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragmentContainer, displayFragment)
-                .addToBackStack(null);
-        transaction.commit();
+        Intent myIntent = new Intent(this, VisionActivity.class);
+        startActivity(myIntent);
     }
 
 
