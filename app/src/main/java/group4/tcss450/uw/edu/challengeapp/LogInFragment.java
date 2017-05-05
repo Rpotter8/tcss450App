@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class LogInFragment extends Fragment implements View.OnClickListener {
     private static final String PARTIAL_URL
-            = "http://cssgate.insttech.washington.edu/" + "~meganelc/login";
+            = "http://cssgate.insttech.washington.edu/" + "~rjp24/login";
     private OnLogInFragmentInteractionListener mListener;
     private EditText mUname;
     private EditText mPassword;

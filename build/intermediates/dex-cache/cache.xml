@@ -129,6 +129,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4873710bcc00e2059ce9af2dac4cba26e0954aa3">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7bc5e979d9d6d53a9b4244f27af6eda66d4c96a9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/Ryan/.android/build-cache/129c699d723d310b11d31cf578eec322d7a0f726/output/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
@@ -144,15 +153,6 @@
         revision="25.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
         <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2ed430b74c648cd7af35ebbe4046d73da5d321c1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a956b333242fcf0a18cdf0ffd9ba038edc293b71">
-        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7bc5e979d9d6d53a9b4244f27af6eda66d4c96a9/classes.dex" />
     </item>
     <item
         is-multidex="true"
