@@ -2,6 +2,7 @@ package group4.tcss450.uw.edu.challengeapp;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -10,7 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +31,9 @@ import java.util.List;
  * to handle interaction events.
  */
 public class RegisterFragment extends Fragment implements View.OnClickListener {
+    private static final String PARTIAL_URL
+            = "http://cssgate.insttech.washington.edu/" + "~rjp24/register";
+
 
     private OnRegisterFragmentInteractionListener mListener;
     private EditText mUname;
@@ -48,6 +60,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        AsyncTask<String, Void, String> task = null;
         if (mListener != null) {
             switch (view.getId()) {
                 case R.id.register_submit_button:
@@ -60,11 +73,22 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                     } else if (!mPassword.getText().toString().equals(mConfirmPassword.getText().toString())) {
                         mConfirmPassword.setError("passwords must match");
                     } else {
-                        Log.d("ACTIVITY", "Register onClick");
-                        List<String> data = new ArrayList<>();
-                        data.add(0, mUname.getText().toString());
-                        data.add(1, mPassword.getText().toString());
-                        mListener.onRegisterFragmentInteraction(data);
+                        task = new RegisterFragment.RegisterWebServiceTask();
+                        //String message = "'" + mUname.getText().toString() + "'";
+
+                        //mPwd = "[{\"pwd:\"" + mPassword.getText().toString() + "\"}]";
+                        //Log.d("ON_CLICK", mPwd);
+                        String username = mUname.getText().toString();
+                        String password1 = mPassword.getText().toString();
+                        String password2 = mConfirmPassword.getText().toString();
+                        if(password1.equals(password2)) {
+                            task.execute(PARTIAL_URL, username, password1, password2);
+                        } else {
+                            Toast.makeText(getActivity(), "Passwords do not match!",
+                                    Toast.LENGTH_LONG).show();
+                        }
+
+
                         break;
                     }
             }
@@ -101,5 +125,64 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     public interface OnRegisterFragmentInteractionListener {
 
         void onRegisterFragmentInteraction(List<String> data);
+    }
+
+
+    private class RegisterWebServiceTask extends AsyncTask<String, Void, String> {
+        //private final String SERVICE = "_post.php";
+        @Override
+        protected String doInBackground(String... strings) {
+            Log.d("doInBackground", "hello");
+            if (strings.length != 4) {
+                throw new IllegalArgumentException("Four String arguments required.");
+            }
+            String response = "";
+            HttpURLConnection urlConnection = null;
+            String url = strings[0];
+            try {
+                //URL urlObject = new URL(url + SERVICE);
+                URL urlObject = new URL(url);
+                urlConnection = (HttpURLConnection) urlObject.openConnection();
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setDoOutput(true);
+                OutputStreamWriter wr = new OutputStreamWriter(urlConnection.getOutputStream());
+                String data = URLEncoder.encode("user", "UTF-8")
+                        + "=" + URLEncoder.encode(strings[1], "UTF-8")
+                        + "&" + URLEncoder.encode("password1", "UTF-8")
+                        + "=" + URLEncoder.encode(strings[2], "UTF-8")
+                        + "&" + URLEncoder.encode("password2", "UTF-8")
+                        + "=" + URLEncoder.encode(strings[3], "UTF-8");
+                wr.write(data);
+                wr.flush();
+                InputStream content = urlConnection.getInputStream();
+                BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
+                String s = "";
+                while ((s = buffer.readLine()) != null) {
+                    response += s;
+                }
+            } catch (Exception e) {
+                response = "Unable to connect, Reason: "
+                        + e.getMessage();
+            } finally {
+                if (urlConnection != null)
+                    urlConnection.disconnect();
+            }
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            Log.d("POST_EXECUTE", result);
+            if(result.equals("true")){
+                mListener.onRegisterFragmentInteraction(null);
+            } else {
+                Toast.makeText(getActivity(), "Invalid Username",
+                        Toast.LENGTH_LONG).show();
+            }
+
+
+
+
+        }
     }
 }

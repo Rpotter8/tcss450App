@@ -136,9 +136,9 @@ public class LogInFragment extends Fragment implements View.OnClickListener {
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setDoOutput(true);
                 OutputStreamWriter wr = new OutputStreamWriter(urlConnection.getOutputStream());
-                String data = URLEncoder.encode("username", "UTF-8")
+                String data = URLEncoder.encode("user", "UTF-8")
                         + "=" + URLEncoder.encode(strings[1], "UTF-8")
-                        + "&" + URLEncoder.encode("pwd", "UTF-8")
+                        + "&" + URLEncoder.encode("password", "UTF-8")
                         + "=" + URLEncoder.encode(strings[2], "UTF-8");
                 wr.write(data);
                 wr.flush();
@@ -161,10 +161,13 @@ public class LogInFragment extends Fragment implements View.OnClickListener {
         @Override
         protected void onPostExecute(String result) {
             Log.d("POST_EXECUTE", result);
-            List<String> data = new ArrayList<>();
-            data.add(0, mUname.getText().toString());
-            data.add(1, mPassword.getText().toString());
-            mListener.onLogInFragmentInteraction(data);
+            if(result.equals("true")){
+                mListener.onLogInFragmentInteraction(null);
+            } else {
+                Toast.makeText(getActivity(), "Invalid username or password",
+                        Toast.LENGTH_LONG).show();
+            }
+
 
 
 
