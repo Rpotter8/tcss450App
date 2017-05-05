@@ -28,11 +28,10 @@ public class DisplayFragment extends Fragment {
     }
 
     public void updateContent(String username, String password) {
+        String welcomeText = "Welcome, " + username + "!";
         TextView tvUsername = (TextView) getActivity().findViewById(R.id.usernameView);
-        tvUsername.setText(username);
+        tvUsername.setText(welcomeText);
 
-        TextView tvPassword = (TextView) getActivity().findViewById(R.id.passwordView);
-        tvPassword.setText(password);
     }
 
     @Override

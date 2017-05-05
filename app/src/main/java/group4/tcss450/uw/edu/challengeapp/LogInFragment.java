@@ -161,12 +161,15 @@ public class LogInFragment extends Fragment implements View.OnClickListener {
         @Override
         protected void onPostExecute(String result) {
             Log.d("POST_EXECUTE", result);
-
-            List<String> data = new ArrayList<>();
-            data.add(0, mUname.getText().toString());
-            data.add(1, mPassword.getText().toString());
-            mListener.onLogInFragmentInteraction(data);
-
+            if (result.equals("true")) {
+                List<String> data = new ArrayList<>();
+                data.add(0, mUname.getText().toString());
+                data.add(1, mPassword.getText().toString());
+                mListener.onLogInFragmentInteraction(data);
+            } else {
+                Toast.makeText(getActivity(),
+                        "Incorrect username or password" , Toast.LENGTH_SHORT).show();
+            }
         }
-}
+    }
 }

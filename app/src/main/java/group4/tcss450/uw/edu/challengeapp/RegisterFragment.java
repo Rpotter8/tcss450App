@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -164,6 +165,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 data.add(0, mUname.getText().toString());
                 data.add(1, mPassword.getText().toString());
                 mListener.onRegisterFragmentInteraction(data);
+            } else {
+                Toast.makeText(getActivity(),
+                        "username unavailable" , Toast.LENGTH_SHORT).show();
             }
         }
     }
