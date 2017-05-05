@@ -13,4 +13,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_vision">VisionActivity</string>
+
+    <string name="hello">Hello World, PhotoIntentActivity!</string>
+    <string name="btnIntend">Take Picture</string>
+    <string name="cannot">Cannot</string>
+    <string name="album_name">CameraSample</string>
+    <string name="buttonDone">Done</string>
 </resources>

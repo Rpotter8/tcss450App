@@ -3,9 +3,7 @@
           package="group4.tcss450.uw.edu.challengeapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-
     <uses-feature android:name="android.hardware.camera"/>
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
@@ -25,8 +23,6 @@
             android:name=".VisionActivity"
             android:label="@string/title_activity_vision"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".TestActivity">
-        </activity>
         <activity android:name=".CameraActivity">
         </activity>
     </application>
