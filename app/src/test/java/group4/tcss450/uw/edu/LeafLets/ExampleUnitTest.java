@@ -1,4 +1,4 @@
-package group4.tcss450.uw.edu.challengeapp;
+package group4.tcss450.uw.edu.LeafLets;
 
 import org.junit.Test;
 
