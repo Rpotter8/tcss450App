@@ -1,5 +1,6 @@
 package group4.tcss450.uw.edu.challengeapp;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +15,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +27,7 @@ import android.widget.ImageView;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -218,6 +222,10 @@ public class CameraActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        requestPermission(this, 1, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA);
+
         setContentView(R.layout.activity_camera);
 
         mImageView = (ImageView) findViewById(R.id.imageView1);
@@ -353,5 +361,44 @@ public class CameraActivity extends AppCompatActivity {
         }
 
         return degree;
+    }
+
+
+
+    public static boolean requestPermission(
+            Activity activity, int requestCode, String... permissions) {
+        boolean granted = true;
+        ArrayList<String> permissionsNeeded = new ArrayList<>();
+
+        for (String s : permissions) {
+            int permissionCheck = ContextCompat.checkSelfPermission(activity, s);
+            boolean hasPermission = (permissionCheck == PackageManager.PERMISSION_GRANTED);
+            granted &= hasPermission;
+            if (!hasPermission) {
+                permissionsNeeded.add(s);
+            }
+        }
+
+        if (granted) {
+            return true;
+        } else {
+            ActivityCompat.requestPermissions(activity,
+                    permissionsNeeded.toArray(new String[permissionsNeeded.size()]),
+                    requestCode);
+            return false;
+        }
+    }
+
+
+    public static boolean permissionGranted(
+            int requestCode, int permissionCode, int[] grantResults) {
+        if (requestCode == permissionCode) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 }
