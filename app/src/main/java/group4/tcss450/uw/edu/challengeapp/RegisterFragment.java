@@ -25,10 +25,7 @@ import java.util.List;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link RegisterFragment.OnRegisterFragmentInteractionListener} interface
- * to handle interaction events.
+ * A fragment for registering a user
  */
 public class RegisterFragment extends Fragment implements View.OnClickListener {
 

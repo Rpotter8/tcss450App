@@ -28,10 +28,7 @@ import java.util.List;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link OnLogInFragmentInteractionListener} interface
- * to handle interaction events.
+ * A fragment to handle all login request
  */
 public class LogInFragment extends Fragment implements View.OnClickListener {
     private static final String PARTIAL_URL
@@ -118,6 +115,9 @@ public class LogInFragment extends Fragment implements View.OnClickListener {
     }
 
 
+    /**
+     * An callback to handle logging into the app.
+     */
     private class LogInWebServiceTask extends AsyncTask<String, Void, String> {
         //private final String SERVICE = "_post.php";
         @Override

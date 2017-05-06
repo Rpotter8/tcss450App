@@ -50,16 +50,21 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Activity to handle sending and display information to and from the Google Cloud Vision API.
+ */
 public class VisionActivity extends AppCompatActivity {
 
-    private String mPhotoPath;  // path to photo taken in Camera Activity
+
     private static final String CLOUD_VISION_API_KEY = "AIzaSyA8P-CF0GLshIbesA60rLH16grktY8rks4";
-    private TextView mImageDetails;
+
 
     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
     private static final String TAG = VisionActivity.class.getSimpleName();
+
+    private TextView mImageDetails;
+    private String mPhotoPath;  // path to photo taken in Camera Activity
 
 
     @Override
@@ -108,10 +113,15 @@ public class VisionActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Calls the google vision API with the image.
+     * @param bit the image being passed on to google.
+     * @throws IOException
+     */
     private void callGoogle(final Bitmap bit) throws IOException {
         mImageDetails.setText("Loading Image, Please Wait!");
 
-        Log.d("Stat", "Of call google");
+        Log.d("Stat", "at call google");
 
         new AsyncTask<Object, Void, String>() {
 
@@ -124,10 +134,7 @@ public class VisionActivity extends AppCompatActivity {
 
                     VisionRequestInitializer requestInitializer =
                             new VisionRequestInitializer(CLOUD_VISION_API_KEY) {
-                                /**
-                                 * We override this so we can inject important identifying fields into the HTTP
-                                 * headers. This enables use of a restricted cloud platform API key.
-                                 */
+
                                 @Override
                                 protected void initializeVisionRequest(VisionRequest<?> visionRequest)
                                         throws IOException {
@@ -152,19 +159,18 @@ public class VisionActivity extends AppCompatActivity {
                     batchAnnotateImagesRequest.setRequests(new ArrayList<AnnotateImageRequest>() {{
                         AnnotateImageRequest annotateImageRequest = new AnnotateImageRequest();
 
-                        // Add the image
+                      //Must encode image in base64 for transmission
                         Image base64EncodedImage = new Image();
-                        // Convert the bitmap to a JPEG
-                        // Just in case it's a format that Android understands but Cloud Vision
+
                         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                         bit.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
                         byte[] imageBytes = byteArrayOutputStream.toByteArray();
 
-                        // Base64 encode the JPEG
+
                         base64EncodedImage.encodeContent(imageBytes);
                         annotateImageRequest.setImage(base64EncodedImage);
 
-                        // add the features we want
+
                         annotateImageRequest.setFeatures(new ArrayList<Feature>() {{
                             Feature labelDetection = new Feature();
                             labelDetection.setType("LABEL_DETECTION");
@@ -172,13 +178,13 @@ public class VisionActivity extends AppCompatActivity {
                             add(labelDetection);
                         }});
 
-                        // Add the list of one thing to the request
+
                         add(annotateImageRequest);
                     }});
 
                     Vision.Images.Annotate annotateRequest =
                             vision.images().annotate(batchAnnotateImagesRequest);
-                    // Due to a bug: requests to Vision API containing large images fail when GZipped.
+
                     annotateRequest.setDisableGZipContent(true);
                     Log.d(TAG, "created Cloud Vision request object, sending request");
 
@@ -207,7 +213,14 @@ public class VisionActivity extends AppCompatActivity {
 
     }
 
-    public static String getSignature(@NonNull PackageManager pm, @NonNull String packageName) {
+
+    /**
+     * Sets up the signutres requied for for conecting to the API
+     * @param pm
+     * @param packageName
+     * @return A string representation of the signature
+     */
+    private static String getSignature(@NonNull PackageManager pm, @NonNull String packageName) {
         try {
             PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
             if (packageInfo == null
@@ -222,6 +235,11 @@ public class VisionActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Digests the signature to the correct length using SHA1 hash function
+     * @param sig the signature to digest
+     * @return the digested signature
+     */
     private static String signatureDigest(Signature sig) {
         byte[] signature = sig.toByteArray();
         try {
