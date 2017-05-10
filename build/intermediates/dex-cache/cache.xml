@@ -2,13 +2,175 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.google.api-client/google-api-client-android/1.20.0/5673179575c32b69a474334255c3044adf18d40/google-api-client-android-1.20.0.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="d2a73074aa0eb325a719c97e50f27b3aa5831b18">
-        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7bc5e979d9d6d53a9b4244f27af6eda66d4c96a9/classes.dex" />
+        sha1="05673179575c32b69a474334255c3044adf18d40">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/google-api-client-android-1.20.0_7970eda71dfdf159a1e1065f86136f36b09fcd34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.google.apis/google-api-services-vision/v1-rev2-1.21.0/4db84d916e8ec80d9aa11c5f89a6cb6621ac1c85/google-api-services-vision-v1-rev2-1.21.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4db84d916e8ec80d9aa11c5f89a6cb6621ac1c85">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/google-api-services-vision-v1-rev2-1.21.0_769b667e4981ad3445ff4d5b54c34a5bdf1c35f7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/support-annotations-25.3.1_4479be180c8b09516a49f65d62abe0487c15764c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/18a25b0416a89baf47cf637fa5353e910fa73fcf/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_00fe4dd194d56e00232cb6d9c86759d5e2406d59.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/c4e168e7a6523cfee5fb2df75a73e17ef4ed1c48/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_58e843a24b458003b7ec841fb5241b64c95a910b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/f8c43ba41603092abf0089d16f575ab288758ffc/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_86d5f30aa35603ed2749d9cb59b3318a8cca0c5f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/3849054e9c6082335c440d097c3a23f9c3d92342/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_5bc0e022a6ca3f86dcf8cbbc69da772fcbfd03dd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client-gson/1.20.0/9204765f39000f6109c927ac66c7963bf9c7df19/google-http-client-gson-1.20.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9204765f39000f6109c927ac66c7963bf9c7df19">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/google-http-client-gson-1.20.0_3abeee1cd73ba5bedc613331968e4e0585ff250a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.google.api-client/google-api-client/1.21.0/16a6b3c680f3bf7b81bb42790ff5c1b72c5bbedc/google-api-client-1.21.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="16a6b3c680f3bf7b81bb42790ff5c1b72c5bbedc">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/google-api-client-1.21.0_251baa63bdeb9e2804db68ce7ba332d6d96118a7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/8b6aba2077ea409dfc858f5c35eb3534d69b3bee/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_0beca32f30a3d502f303a082f67c39006d4f63bc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.1.3/f6c3aed1cdfa21b5c1737c915186ea93a95a58bd/jackson-core-2.1.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f6c3aed1cdfa21b5c1737c915186ea93a95a58bd">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/jackson-core-2.1.3_c9b67f5626f1bd29cbb33f4bcfcad33079f8bfb1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.1/2e66da15851f9f5b5079228f856c2f090ba98c38/gson-2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2e66da15851f9f5b5079228f856c2f090ba98c38">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/gson-2.1_5d8ce6149e7d82961f8f6de753d67883ea09e954.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/620c48b55c6c7320ea49509fe4cd6816bf9892ef/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_c6b4525ca5c6171500cd347b5b6455825824dab7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.google.guava/guava-jdk5/17.0/463f8378feba44df7ba7cd9272d01837dad62b36/guava-jdk5-17.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="463f8378feba44df7ba7cd9272d01837dad62b36">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/guava-jdk5-17.0_be571a4706b17f84ec9f9264e6b8af024e10f7d4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/1fd0eae8ea315095759f1576e427435925c3bfa0/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_5222d4d3d336781282a22b32853f37f86449bdf2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client-android/1.20.0/313dc99a7963523871495897ca11aa8472b3c6fd/google-http-client-android-1.20.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="313dc99a7963523871495897ca11aa8472b3c6fd">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/google-http-client-android-1.20.0_9c6087169712445f5656b22819492875b3d55aa3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/763d7603fd0f6877c2daef1a396de08410b48f14/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_af81709725e382169ffb7f055e5b565045c1fbc2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/41c9fffa2b3d7d4b9dcbe76bfd4d1dfe911cadea/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_1643a5f847dfbf4eeed39f7a64e9fdfdd2f3ba20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.google.oauth-client/google-oauth-client/1.21.0/61ec42bbfc51aafde5eb8b4923c602c5b5965bc2/google-oauth-client-1.21.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="61ec42bbfc51aafde5eb8b4923c602c5b5965bc2">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/google-oauth-client-1.21.0_823717d0de6e497bd049c1cb4024ab4fcec51cef.jar" />
     </item>
     <item
         is-multidex="true"
@@ -18,6 +180,87 @@
         revision="25.0.2"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
         <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_54e470590dbc3d06e1f9709f673290ceadfc4a8a/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.0-alpha8/constraint-layout-solver-1.0.0-alpha8.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="80c371a4fd5e1b77f0e3a25b171356878543ffdd">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/constraint-layout-solver-1.0.0-alpha8_9c9bb73e0ef574935b8af6ec3a024f46dc63c029.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/fbdf9f31fad72de93cee9a216fc9821ba1a01683/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_32b60cf234f51ac0e14d53d0196122d366e3a453.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client/1.21.0/42631630fe1276d4d6d6397bb07d53a4e4fec278/google-http-client-1.21.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="42631630fe1276d4d6d6397bb07d53a4e4fec278">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/google-http-client-1.21.0_577da12e8fb576534f896bf8bb3da920d992c00a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/f7b6da3263e321771f42797d6d117c5bee1032cc/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_baa01ae0d33ed5b1b931043f82a6c05f2df1c819.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/f0d05c6975d7cb27e2563d2f7046a1fd0f1feb7f/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_37d131c4bd7ba97887f2d8058b9dfd15b9c30049.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1daeaa69f2743743d5e27216602522ea3e7a49c4">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7bc5e979d9d6d53a9b4244f27af6eda66d4c96a9/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client-jackson2/1.21.0/8ce17bdd15fff0fd8cf359757f29e778fc7191ad/google-http-client-jackson2-1.21.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8ce17bdd15fff0fd8cf359757f29e778fc7191ad">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/google-http-client-jackson2-1.21.0_c496a9040129773736b4e20d751c93aee5bb0482.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.android/build-cache/f59103679c4c01e4dd25007af6f8a5d30a8aed22/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0e753ea8d0a2dea270da7d96a7d6e9d2e9c10f94">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/classes_c1fe43d952cce16aca7ef1ef72771325a8473658.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Ryan/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/1.3.9/40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf/jsr305-1.3.9.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf">
+        <dex dex="/Users/Ryan/Documents/TCSS_450/project/tcss450App/app/build/intermediates/pre-dexed/release/jsr305-1.3.9_37d937811f0fe109699384ade48f8cf1e625c2e5.jar" />
     </item>
 
 </items>
