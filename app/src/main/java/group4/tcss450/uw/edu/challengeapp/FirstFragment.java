@@ -12,10 +12,7 @@ import android.widget.Button;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FirstFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
+ * THe first fragment that is loaded. Our landing screen.
  */
 public class FirstFragment extends Fragment implements View.OnClickListener {
 

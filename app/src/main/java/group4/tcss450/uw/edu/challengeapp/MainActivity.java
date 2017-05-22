@@ -9,6 +9,9 @@ import android.util.Log;
 
 import java.util.List;
 
+/**
+ * The first activity and it handles getting signed in to the system.
+ */
 public class MainActivity extends AppCompatActivity implements
                         FirstFragment.OnFragmentInteractionListener,
                         LogInFragment.OnLogInFragmentInteractionListener,

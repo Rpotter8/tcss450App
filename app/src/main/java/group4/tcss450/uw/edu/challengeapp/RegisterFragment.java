@@ -25,15 +25,15 @@ import java.util.List;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link RegisterFragment.OnRegisterFragmentInteractionListener} interface
- * to handle interaction events.
+ * A fragment for registering a user
  */
 public class RegisterFragment extends Fragment implements View.OnClickListener {
     private static final String PARTIAL_URL
             = "http://cssgate.insttech.washington.edu/" + "~rjp24/register";
 
+
+    private static final String PARTIAL_URL
+            = "http://cssgate.insttech.washington.edu/" + "~rjp24/register";
 
     private OnRegisterFragmentInteractionListener mListener;
     private EditText mUname;
@@ -73,6 +73,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                     } else if (!mPassword.getText().toString().equals(mConfirmPassword.getText().toString())) {
                         mConfirmPassword.setError("passwords must match");
                     } else {
+<<<<<<< HEAD
                         task = new RegisterFragment.RegisterWebServiceTask();
                         //String message = "'" + mUname.getText().toString() + "'";
 
@@ -87,6 +88,14 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                             Toast.makeText(getActivity(), "Passwords do not match!",
                                     Toast.LENGTH_LONG).show();
                         }
+=======
+                        Log.d("ACTIVITY", "Register onClick");
+
+                        new RegisterWebServiceTask().execute(PARTIAL_URL,
+                                mUname.getText().toString(),
+                                mPassword.getText().toString(),
+                                mConfirmPassword.getText().toString());
+>>>>>>> 28a410c8c3b34796d3315fd400af579def26b156
 
 
                         break;
@@ -151,7 +160,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                         + "&" + URLEncoder.encode("password1", "UTF-8")
                         + "=" + URLEncoder.encode(strings[2], "UTF-8")
                         + "&" + URLEncoder.encode("password2", "UTF-8")
+<<<<<<< HEAD
                         + "=" + URLEncoder.encode(strings[3], "UTF-8");
+=======
+                        + "=" + URLEncoder.encode(strings[3], "UTF-8");;
+>>>>>>> 28a410c8c3b34796d3315fd400af579def26b156
                 wr.write(data);
                 wr.flush();
                 InputStream content = urlConnection.getInputStream();
@@ -173,11 +186,19 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         @Override
         protected void onPostExecute(String result) {
             Log.d("POST_EXECUTE", result);
+<<<<<<< HEAD
             if(result.equals("true")){
                 mListener.onRegisterFragmentInteraction(null);
             } else {
                 Toast.makeText(getActivity(), "Invalid Username",
                         Toast.LENGTH_LONG).show();
+=======
+            if(result.equals("true")) {
+                mListener.onRegisterFragmentInteraction(null);
+            } else {
+                Toast.makeText(getActivity(),"Invalid Username or Password",
+                        Toast.LENGTH_SHORT).show();
+>>>>>>> 28a410c8c3b34796d3315fd400af579def26b156
             }
 
 

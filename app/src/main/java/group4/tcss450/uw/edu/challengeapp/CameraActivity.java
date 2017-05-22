@@ -1,5 +1,6 @@
 package group4.tcss450.uw.edu.challengeapp;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +15,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,33 +27,40 @@ import android.widget.ImageView;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Activity to handle taking a picture and handing the picture back to VisionActivity
+ */
 public class CameraActivity extends AppCompatActivity {
 
     private static final int ACTION_TAKE_PHOTO = 1;
 
     private static final String BITMAP_STORAGE_KEY = "viewbitmap";
     private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
-    private ImageView mImageView;
-    private Bitmap mImageBitmap;
-
-    private String mCurrentPhotoPath;
-    private String mPhotoPathToReturn;
-
     private static final String JPEG_FILE_PREFIX = "IMG_";
     private static final String JPEG_FILE_SUFFIX = ".jpg";
 
+    private ImageView mImageView;
+    private Bitmap mImageBitmap;
+    private String mCurrentPhotoPath;
+    private String mPhotoPathToReturn;
     private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
 
 
-    /* Photo album for this application */
+    /**
+     * @return Return the photo album
+     */
     private String getAlbumName() {
         return getString(R.string.album_name);
     }
 
 
+    /**
+     * @return Returns the album's directory
+     */
     private File getAlbumDir() {
         File storageDir = null;
 
@@ -74,7 +84,11 @@ public class CameraActivity extends AppCompatActivity {
         return storageDir;
     }
 
-
+    /**
+     * Creates the image file and stores it.
+     * @return Returns the image file
+     * @throws IOException
+     */
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -84,6 +98,11 @@ public class CameraActivity extends AppCompatActivity {
         return imageF;
     }
 
+    /**
+     *  Sets up the photo file for use
+     * @return Returns the set up file
+     * @throws IOException
+     */
     private File setUpPhotoFile() throws IOException {
 
         File f = createImageFile();
@@ -95,6 +114,9 @@ public class CameraActivity extends AppCompatActivity {
         return f;
     }
 
+    /**
+     * Sets the picture in the image view
+     */
     private void setPic() {
 
 		/* There isn't enough memory to open up more than a couple camera photos */
@@ -157,7 +179,9 @@ public class CameraActivity extends AppCompatActivity {
         mImageView.setVisibility(View.VISIBLE);
     }
 
-
+    /**
+     * Adds this picture to the gallery
+     */
     private void galleryAddPic() {
         Intent mediaScanIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
         File f = new File(mCurrentPhotoPath);
@@ -167,7 +191,10 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
-    // this method uses Android build-in camera app
+    /**
+     * Allows the activity to use androids built in camera app.
+     * @param actionCode An integer id for what action is being preformed
+     */
     private void dispatchTakePictureIntent(int actionCode) {
 
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -194,7 +221,9 @@ public class CameraActivity extends AppCompatActivity {
         startActivityForResult(takePictureIntent, actionCode);
     }
 
-
+    /**
+     * Big photos cause problems. This method handles those problems.
+     */
     private void handleBigCameraPhoto() {
 
         if (mCurrentPhotoPath != null) {
@@ -218,6 +247,10 @@ public class CameraActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        requestPermission(this, 1, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA);
+
         setContentView(R.layout.activity_camera);
 
         mImageView = (ImageView) findViewById(R.id.imageView1);
@@ -310,6 +343,7 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
+
     private void setBtnListenerOrDisable(
             Button btn,
             Button.OnClickListener onClickListener,
@@ -324,7 +358,11 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
-    // a method to get image orientation in degrees
+    /**
+     * Gets the orientation of the photo.
+     * @param filepath The file path to the photo
+     * @return returns and integer code for the orientation.
+     */
     public static int getExifOrientation(String filepath) {
         int degree = 0;
         ExifInterface exif = null;
@@ -354,4 +392,39 @@ public class CameraActivity extends AppCompatActivity {
 
         return degree;
     }
+
+
+    /**
+     * Handles requesting permissions.
+     * @param activity The activity where you request the permission
+     * @param requestCode The request code of the permission.
+     * @param permissions The actual permissions that must be requested.
+     * @return Returns true is the permissions are granted and false if they are not.
+     */
+    public static boolean requestPermission(
+            Activity activity, int requestCode, String... permissions) {
+        boolean granted = true;
+        ArrayList<String> permissionsNeeded = new ArrayList<>();
+
+        for (String s : permissions) {
+            int permissionCheck = ContextCompat.checkSelfPermission(activity, s);
+            boolean hasPermission = (permissionCheck == PackageManager.PERMISSION_GRANTED);
+            granted &= hasPermission;
+            if (!hasPermission) {
+                permissionsNeeded.add(s);
+            }
+        }
+
+        if (granted) {
+            return true;
+        } else {
+            ActivityCompat.requestPermissions(activity,
+                    permissionsNeeded.toArray(new String[permissionsNeeded.size()]),
+                    requestCode);
+            return false;
+        }
+    }
+
+
+
 }
