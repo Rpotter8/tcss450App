@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Leaf Let's</string>
+    <string name="app_name">Leaf Let\'s</string>
 
     <string name="login">Log In</string>
     <string name="register">Register</string>
@@ -19,4 +19,8 @@
     <string name="cannot">Cannot</string>
     <string name="album_name">CameraSample</string>
     <string name="buttonDone">Done</string>
+
+    <!-- Wikipedia -->
+    <string name="text_view_wikipedia_title">Title</string>
+    <string name="text_view_wikipedia_url">URL</string>
 </resources>

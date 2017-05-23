@@ -161,19 +161,13 @@ public class LogInFragment extends Fragment implements View.OnClickListener {
         @Override
         protected void onPostExecute(String result) {
             Log.d("POST_EXECUTE", result);
-<<<<<<< HEAD
-            if(result.equals("true")){
-                mListener.onLogInFragmentInteraction(null);
-            } else {
-                Toast.makeText(getActivity(), "Invalid username or password",
-                        Toast.LENGTH_LONG).show();
-=======
+
             if(result.equals("true")) {
                 mListener.onLogInFragmentInteraction(null);
             } else {
                 Toast.makeText(getActivity(),"Invalid Username or Password",
                         Toast.LENGTH_SHORT).show();
->>>>>>> 28a410c8c3b34796d3315fd400af579def26b156
+
             }
 
 

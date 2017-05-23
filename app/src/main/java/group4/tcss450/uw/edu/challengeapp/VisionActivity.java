@@ -30,14 +30,11 @@ import com.google.api.services.vision.v1.Vision;
 import com.google.api.services.vision.v1.VisionRequest;
 import com.google.api.services.vision.v1.VisionRequestInitializer;
 import com.google.api.services.vision.v1.model.AnnotateImageRequest;
-import com.google.api.services.vision.v1.model.AnnotateImageResponse;
 import com.google.api.services.vision.v1.model.BatchAnnotateImagesRequest;
 import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
 import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
 import com.google.common.io.BaseEncoding;
-
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -48,13 +45,16 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.List;
+
+import group4.tcss450.uw.edu.challengeapp.camera.CameraActivity;
+import group4.tcss450.uw.edu.challengeapp.wikipedia.ResultListActivity;
 
 /**
  * Activity to handle sending and display information to and from the Google Cloud Vision API.
  */
 public class VisionActivity extends AppCompatActivity {
 
+    private static final String WIKIPEDIA_QUERY = "tulip";
 
     private static final String CLOUD_VISION_API_KEY = "AIzaSyA8P-CF0GLshIbesA60rLH16grktY8rks4";
 
@@ -204,6 +204,10 @@ public class VisionActivity extends AppCompatActivity {
                 Log.d("result", result);
                 mImageDetails.setText(result);
 
+                // Start new activity with list of wikipedia results
+                Intent intent = new Intent(getBaseContext(), ResultListActivity.class);
+                intent.putExtra("query", WIKIPEDIA_QUERY);
+                startActivity(intent);
 
             }
         }.execute();
