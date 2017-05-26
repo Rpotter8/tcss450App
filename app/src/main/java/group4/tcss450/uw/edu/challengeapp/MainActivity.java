@@ -53,14 +53,16 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onLogInFragmentInteraction(List<String> data) {
 
-        Intent myIntent = new Intent(this, VisionActivity.class);
+        //Intent myIntent = new Intent(this, VisionActivity.class);
+        Intent myIntent = new Intent(this, GalleryActivity.class);
         startActivity(myIntent);
     }
 
     @Override
     public void onRegisterFragmentInteraction(List<String> data) {
 
-        Intent myIntent = new Intent(this, VisionActivity.class);
+        //Intent myIntent = new Intent(this, VisionActivity.class);
+        Intent myIntent = new Intent(this, GalleryActivity.class);
         startActivity(myIntent);
     }
 
