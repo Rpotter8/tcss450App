@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -35,6 +36,10 @@ import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
 import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
 import com.google.common.io.BaseEncoding;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -201,21 +206,54 @@ public class VisionActivity extends AppCompatActivity {
             }
 
             protected void onPostExecute(String result) {
-                Log.d("result", result);
-                mImageDetails.setText(result);
 
-                // Start new activity with list of wikipedia results
-                Intent intent = new Intent(getBaseContext(), ResultListActivity.class);
-                intent.putExtra("query", WIKIPEDIA_QUERY);
-                startActivity(intent);
+                mImageDetails.setText(result);
+                if(!(result.contains("plant") || result.contains("Plant"))) {
+                    Toast.makeText(VisionActivity.this,"No plant was detected please try again.",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+
+                    // Start new activity with list of wikipedia results
+                    Intent intent = new Intent(getBaseContext(), ResultListActivity.class);
+                    intent.putExtra("query", handleJSON(result));
+                    startActivity(intent);
+                }
 
             }
         }.execute();
 
 
-
-
     }
+
+    private String handleJSON(String result) {
+        String parsed = "";
+        try {
+            JSONObject res = new JSONObject(result);
+
+            JSONArray resArr = res.getJSONArray("responses");
+            res = resArr.optJSONObject(0);
+            resArr = res.getJSONArray("labelAnnotations");
+            for(int i = 0; i < resArr.length(); i ++) {
+                JSONObject current = resArr.getJSONObject(i);
+                String value = current.getString("description");
+                if (value.toLowerCase().contains("family")) {
+                    parsed = value;
+                }
+                Log.d("current description", value);
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return parsed;
+    }
+
+
+
+
+
+
 
 
     /**
