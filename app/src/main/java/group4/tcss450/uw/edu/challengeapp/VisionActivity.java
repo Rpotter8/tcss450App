@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -41,12 +42,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 
+import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -208,7 +212,10 @@ public class VisionActivity extends AppCompatActivity {
             protected void onPostExecute(String result) {
 
                 mImageDetails.setText(result);
-                if(!(result.contains("plant") || result.contains("Plant"))) {
+                if(!(result.toLowerCase().contains("plant")
+                        || result.toLowerCase().contains("Plant")
+                        || result.toLowerCase().contains("leaf")
+                        || result.toLowerCase().contains("petal"))) {
                     Toast.makeText(VisionActivity.this,"No plant was detected please try again.",
                             Toast.LENGTH_SHORT).show();
                 } else {
@@ -226,27 +233,86 @@ public class VisionActivity extends AppCompatActivity {
     }
 
     private String handleJSON(String result) {
-        String parsed = "";
+        String parsed = null;
+
         try {
             JSONObject res = new JSONObject(result);
-
+            JSONArray plants = loadJSONFromAsset();
             JSONArray resArr = res.getJSONArray("responses");
             res = resArr.optJSONObject(0);
             resArr = res.getJSONArray("labelAnnotations");
             for(int i = 0; i < resArr.length(); i ++) {
                 JSONObject current = resArr.getJSONObject(i);
-                String value = current.getString("description");
-                if (value.toLowerCase().contains("family")) {
-                    parsed = value;
+                String value = current.getString("description").toLowerCase();
+                for(int j = 0; j < plants.length(); j ++) {
+                    if(value.equals(plants.getJSONObject(j).getString("FIELD4").toLowerCase())
+                            && !value.equals("flower")
+                            && !value.equals("plant")
+                            && !value.equals("petal")
+                            && !value.equals("pink")
+                            && !value.equals("blue")
+                            && !value.equals("red")
+                            && !value.equals("green")
+                            && !value.equals("orange")
+                            && !value.equals("brown")
+                            && !value.equals("black")
+                            && !value.equals("yellow")
+                            && !value.equals("white")
+                            && !value.equals("purple")
+                            && !value.equals("violet")
+                            && !value.equals("magenta")
+                            && !value.equals("teal")
+                            && !value.equals("cyan")
+                            && !value.equals("red")) {
+                        parsed = value;
+                        break;
+                    }
                 }
-                Log.d("current description", value);
+                if(parsed != null) {
+                    break;
+                }
+
 
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        Log.d("PARSED", parsed);
         return parsed;
+        }
+
+    public JSONArray loadJSONFromAsset() {
+        String json = null;
+        try {
+
+            InputStream is = getAssets().open("convertcsv.json");
+
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+
+            is.read(buffer);
+
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        JSONArray js = new JSONArray();
+        try {
+            js = new JSONArray(json);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return js;
+
     }
 
 
