@@ -17,4 +17,12 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!--Login/Register Button-->
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@color/White</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:minHeight">46dp</item>
+        <item name="android:minWidth">128dp</item>
+    </style>
+
 </resources>
