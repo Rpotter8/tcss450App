@@ -34,6 +34,7 @@ import com.google.api.services.vision.v1.VisionRequestInitializer;
 import com.google.api.services.vision.v1.model.AnnotateImageRequest;
 import com.google.api.services.vision.v1.model.BatchAnnotateImagesRequest;
 import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
+import com.google.api.services.vision.v1.model.EntityAnnotation;
 import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
 import com.google.common.io.BaseEncoding;
@@ -54,6 +55,8 @@ import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import group4.tcss450.uw.edu.challengeapp.camera.CameraActivity;
 import group4.tcss450.uw.edu.challengeapp.wikipedia.ResultListActivity;
@@ -115,6 +118,7 @@ public class VisionActivity extends AppCompatActivity {
         }
         try {
             Log.d("Call", "To Google");
+            bit = scaleBitmapDown(bit, 1200);
             callGoogle(bit);
         } catch (IOException e) {
             e.printStackTrace();
@@ -227,9 +231,33 @@ public class VisionActivity extends AppCompatActivity {
                 }
 
             }
+
+
+
+
         }.execute();
 
 
+    }
+
+    private Bitmap scaleBitmapDown(Bitmap bitmap, int maxDimension) {
+
+        int originalWidth = bitmap.getWidth();
+        int originalHeight = bitmap.getHeight();
+        int resizedWidth = maxDimension;
+        int resizedHeight = maxDimension;
+
+        if (originalHeight > originalWidth) {
+            resizedHeight = maxDimension;
+            resizedWidth = (int) (resizedHeight * (float) originalWidth / (float) originalHeight);
+        } else if (originalWidth > originalHeight) {
+            resizedWidth = maxDimension;
+            resizedHeight = (int) (resizedWidth * (float) originalHeight / (float) originalWidth);
+        } else if (originalHeight == originalWidth) {
+            resizedHeight = maxDimension;
+            resizedWidth = maxDimension;
+        }
+        return Bitmap.createScaledBitmap(bitmap, resizedWidth, resizedHeight, false);
     }
 
     private String handleJSON(String result) {
