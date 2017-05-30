@@ -97,7 +97,7 @@ public class VisionActivity extends AppCompatActivity {
             }
         });
 
-        mImageDetails = (TextView) findViewById(R.id.image_details);
+        mImageDetails = (TextView) findViewById(R.id.imageDetails);
     }
 
     @Override
@@ -132,7 +132,7 @@ public class VisionActivity extends AppCompatActivity {
      * @throws IOException
      */
     private void callGoogle(final Bitmap bit) throws IOException {
-        mImageDetails.setText("Loading Image, Please Wait!");
+        mImageDetails.setVisibility(View.VISIBLE);
 
         Log.d("Stat", "at call google");
 
@@ -215,7 +215,6 @@ public class VisionActivity extends AppCompatActivity {
 
             protected void onPostExecute(String result) {
 
-                mImageDetails.setText(result);
                 if(!(result.toLowerCase().contains("plant")
                         || result.toLowerCase().contains("Plant")
                         || result.toLowerCase().contains("leaf")
@@ -235,7 +234,7 @@ public class VisionActivity extends AppCompatActivity {
                                         "determine what it was. please try again.",
                                 Toast.LENGTH_LONG).show();
                     }
-                    
+
                 }
 
             }

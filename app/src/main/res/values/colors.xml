@@ -2,9 +2,9 @@
 <resources>
     <color name="colorPrimary">#96aa39</color>
     <color name="colorPrimaryDark">#879933</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff4081</color>
     <color name="year">#999999</color>
     <color name="title">#222222</color>
 
-    <color name="White">#FFFFFF</color>
+    <color name="White">#ffffff</color>
 </resources>
