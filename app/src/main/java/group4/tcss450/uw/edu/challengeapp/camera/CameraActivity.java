@@ -50,6 +50,8 @@ public class CameraActivity extends AppCompatActivity {
     private String mPhotoPathToReturn;
     private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
 
+    private Button backBtn;
+
 
     /**
      * @return Return the photo album
@@ -119,6 +121,7 @@ public class CameraActivity extends AppCompatActivity {
      * Sets the picture in the image view
      */
     private void setPic() {
+        backBtn.setVisibility(View.VISIBLE);
 
 		/* There isn't enough memory to open up more than a couple camera photos */
 		/* So pre-scale the target bitmap into which the file is decoded */
@@ -271,18 +274,19 @@ public class CameraActivity extends AppCompatActivity {
             mAlbumStorageDirFactory = new BaseAlbumDirFactory();
         }
 
-        Button backBtn = (Button) findViewById(R.id.buttonDone);
+        backBtn = (Button) findViewById(R.id.buttonDone);
         backBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 Intent returnIntent = new Intent();
-                Log.v("RETURN PATH", mPhotoPathToReturn);
+
                 returnIntent.putExtra("result", mPhotoPathToReturn);
                 setResult(Activity.RESULT_OK, returnIntent);
                 finish();
             }
         });
+        backBtn.setVisibility(View.INVISIBLE);
 
     }
 

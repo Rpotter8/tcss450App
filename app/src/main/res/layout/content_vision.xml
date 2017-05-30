@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:id="@+id/contentVis"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="group4.tcss450.uw.edu.challengeapp.VisionActivity"
     tools:showIn="@layout/activity_vision"

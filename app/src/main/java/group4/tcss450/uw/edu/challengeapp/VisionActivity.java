@@ -1,6 +1,7 @@
 package group4.tcss450.uw.edu.challengeapp;
 
 
+
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -14,6 +15,8 @@ import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -59,12 +62,13 @@ import java.util.List;
 import java.util.Locale;
 
 import group4.tcss450.uw.edu.challengeapp.camera.CameraActivity;
+import group4.tcss450.uw.edu.challengeapp.dummy.DummyContent;
 import group4.tcss450.uw.edu.challengeapp.wikipedia.ResultListActivity;
 
 /**
  * Activity to handle sending and display information to and from the Google Cloud Vision API.
  */
-public class VisionActivity extends AppCompatActivity {
+public class VisionActivity extends AppCompatActivity implements GalleryFragment.OnListFragmentInteractionListener {
 
     private static final String WIKIPEDIA_QUERY = "tulip";
 
@@ -88,6 +92,7 @@ public class VisionActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,31 +102,38 @@ public class VisionActivity extends AppCompatActivity {
             }
         });
 
-        mImageDetails = (TextView) findViewById(R.id.imageDetails);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction =
+                fragmentManager.beginTransaction();
+        FragmentTransaction replace = fragmentTransaction.replace(R.id.vision, new GalleryFragment() );
+        fragmentTransaction.commit();
+
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(Integer.toString(resultCode), Integer.toString(resultCode));
-
-        mPhotoPath = data.getStringExtra("result");
-        Log.v("RETURNED PHOTO PATH", mPhotoPath);
-        Bitmap bit = null;
-        File f= new File(mPhotoPath);
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        try {
-            bit = BitmapFactory.decodeStream(new FileInputStream(f), null, options);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            Log.d("Call", "To Google");
-            bit = scaleBitmapDown(bit, 1200);
-            callGoogle(bit);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(data != null) {
+            mPhotoPath = data.getStringExtra("result");
+            Log.v("RETURNED PHOTO PATH", mPhotoPath);
+            Bitmap bit = null;
+            File f = new File(mPhotoPath);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            try {
+                bit = BitmapFactory.decodeStream(new FileInputStream(f), null, options);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            try {
+                Log.d("Call", "To Google");
+                bit = scaleBitmapDown(bit, 1200);
+                callGoogle(bit);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -132,7 +144,7 @@ public class VisionActivity extends AppCompatActivity {
      * @throws IOException
      */
     private void callGoogle(final Bitmap bit) throws IOException {
-        mImageDetails.setVisibility(View.VISIBLE);
+//        mImageDetails.setVisibility(View.VISIBLE);
 
         Log.d("Stat", "at call google");
 
@@ -221,6 +233,9 @@ public class VisionActivity extends AppCompatActivity {
                         || result.toLowerCase().contains("petal"))) {
                     Toast.makeText(VisionActivity.this,"No plant was detected please try again.",
                             Toast.LENGTH_SHORT).show();
+//                    mImageDetails = (TextView) findViewById(R.id.imageDetails);
+
+//                    mImageDetails.setText("Press the camera button\nagain to try this one more\ntime.");
                 } else {
 
                     // Start new activity with list of wikipedia results
@@ -238,8 +253,6 @@ public class VisionActivity extends AppCompatActivity {
                 }
 
             }
-
-
 
 
         }.execute();
@@ -351,11 +364,6 @@ public class VisionActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
     /**
      * Sets up the signutres requied for for conecting to the API
      * @param pm
@@ -391,5 +399,10 @@ public class VisionActivity extends AppCompatActivity {
         } catch (NoSuchAlgorithmException e) {
             return null;
         }
+    }
+
+    @Override
+    public void onListFragmentInteraction(String item) {
+
     }
 }
