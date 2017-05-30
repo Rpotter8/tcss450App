@@ -1,6 +1,8 @@
 package group4.tcss450.uw.edu.challengeapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
     private ArrayList<CreateList> galleryList;
     private Context context;
+    public MyAdapter.ViewHolder mViewHolder;
 
     public MyAdapter(Context context, ArrayList<CreateList> galleryList) {
         this.galleryList = galleryList;
@@ -33,13 +36,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder viewHolder, int i) {
+        mViewHolder = viewHolder;
         viewHolder.title.setText(galleryList.get(i).getImage_title());
         viewHolder.img.setScaleType(ImageView.ScaleType.CENTER_CROP);
         viewHolder.img.setImageResource((galleryList.get(i).getImage_ID()));
         viewHolder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"Image",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context,"Image",Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(v.getContext(), VisionActivity.class);
+                v.getContext().startActivity(myIntent);
             }
         });
     }
@@ -58,6 +64,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
             title = (TextView)view.findViewById(R.id.title);
             img = (ImageView) view.findViewById(R.id.img);
         }
+
+        public ImageView getImg() {
+            return this.img;
+        }
     }
+
 }
 

@@ -1,16 +1,19 @@
 package group4.tcss450.uw.edu.challengeapp;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class GalleryActivity extends AppCompatActivity {
+public class GalleryActivity extends AppCompatActivity implements View.OnClickListener{
 
     private final String image_titles[] = {
             "Img1",
@@ -38,12 +41,9 @@ public class GalleryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gallery);
 
+        setContentView(R.layout.activity_gallery);
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.imagegallery);
-        if (recyclerView == null) {
-            Log.d("ON_CREATE", "recycler view is null");
-        }
         recyclerView.setHasFixedSize(true);
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),3);
@@ -51,6 +51,7 @@ public class GalleryActivity extends AppCompatActivity {
         ArrayList<CreateList> createLists = prepareData();
         MyAdapter adapter = new MyAdapter(getApplicationContext(), createLists);
         recyclerView.setAdapter(adapter);
+
     }
 
     private ArrayList<CreateList> prepareData(){
@@ -61,10 +62,20 @@ public class GalleryActivity extends AppCompatActivity {
             createList.setImage_title(image_titles[i]);
             createList.setImage_ID(image_ids[i]);
             theimages.add(createList);
+
         }
+
 
         return theimages;
     }
+
+    @Override
+    public void onClick(View v) {
+        Log.d("ON_CLICK", "hello");
+        Intent myIntent = new Intent(getApplicationContext(), VisionActivity.class);
+        startActivity(myIntent);
+    }
+
 
     //Bitmap bmp = BitmapFactory.decodeFile(pathName);
     //ImageView img;
