@@ -226,8 +226,16 @@ public class VisionActivity extends AppCompatActivity {
 
                     // Start new activity with list of wikipedia results
                     Intent intent = new Intent(getBaseContext(), ResultListActivity.class);
-                    intent.putExtra("query", handleJSON(result));
-                    startActivity(intent);
+                    String query = handleJSON(result);
+                    if (query != null) {
+                        intent.putExtra("query", handleJSON(result));
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(VisionActivity.this,"We saw a plant, but were unable to " +
+                                        "determine what it was. please try again.",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    
                 }
 
             }
@@ -305,7 +313,6 @@ public class VisionActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.d("PARSED", parsed);
         return parsed;
         }
 
