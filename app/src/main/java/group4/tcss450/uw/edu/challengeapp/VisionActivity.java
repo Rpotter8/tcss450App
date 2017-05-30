@@ -2,6 +2,7 @@ package group4.tcss450.uw.edu.challengeapp;
 
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -10,7 +11,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -37,7 +37,6 @@ import com.google.api.services.vision.v1.VisionRequestInitializer;
 import com.google.api.services.vision.v1.model.AnnotateImageRequest;
 import com.google.api.services.vision.v1.model.BatchAnnotateImagesRequest;
 import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
-import com.google.api.services.vision.v1.model.EntityAnnotation;
 import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
 import com.google.common.io.BaseEncoding;
@@ -46,23 +45,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 import group4.tcss450.uw.edu.challengeapp.camera.CameraActivity;
-import group4.tcss450.uw.edu.challengeapp.dummy.DummyContent;
 import group4.tcss450.uw.edu.challengeapp.wikipedia.ResultListActivity;
 
 /**
@@ -149,7 +143,15 @@ public class VisionActivity extends AppCompatActivity implements GalleryFragment
         Log.d("Stat", "at call google");
 
         new AsyncTask<Object, Void, String>() {
+            private ProgressDialog dialog = new ProgressDialog(VisionActivity.this);
 
+            /** progress dialog to show user that the backup is processing. */
+            /** application context. */
+            @Override
+            protected void onPreExecute() {
+                this.dialog.setMessage("Please wait");
+                this.dialog.show();
+            }
 
             @Override
             protected String doInBackground(Object... objects) {
@@ -226,6 +228,10 @@ public class VisionActivity extends AppCompatActivity implements GalleryFragment
             }
 
             protected void onPostExecute(String result) {
+
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
 
                 if(!(result.toLowerCase().contains("plant")
                         || result.toLowerCase().contains("Plant")
@@ -403,6 +409,21 @@ public class VisionActivity extends AppCompatActivity implements GalleryFragment
 
     @Override
     public void onListFragmentInteraction(String item) {
-
+        Bitmap bit = null;
+        File f = new File(item);
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        try {
+            bit = BitmapFactory.decodeStream(new FileInputStream(f), null, options);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            Log.d("Call", "To Google");
+            bit = scaleBitmapDown(bit, 1200);
+            callGoogle(bit);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -10,10 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import group4.tcss450.uw.edu.challengeapp.dummy.DummyContent;
-
-
-import java.util.List;
+import group4.tcss450.uw.edu.challengeapp.dummy.ImageContent;
 
 /**
  * A fragment representing a list of Items.
@@ -55,7 +52,7 @@ public class GalleryFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(ImageContent.ITEMS, mListener));
         }
         return view;
     }
@@ -77,6 +74,8 @@ public class GalleryFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    
 
     /**
      * This interface must be implemented by activities that contain this
