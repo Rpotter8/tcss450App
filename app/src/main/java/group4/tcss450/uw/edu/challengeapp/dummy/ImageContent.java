@@ -33,7 +33,7 @@ public class ImageContent {
      */
     public static final Map<String, String> ITEM_MAP = new HashMap<String, String>();
 
-    private static final int COUNT = 25;
+    private boolean full;
 
     private static AlbumStorageDirFactory mAlbumStorageDirFactory;
 
@@ -45,9 +45,12 @@ public class ImageContent {
              mAlbumStorageDirFactory = new BaseAlbumDirFactory();
          }
         // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
-            addItem();
-        }
+
+         File f = getAlbumDir();
+
+
+         addItem();
+
     }
 
     private static File getAlbumDir() {
@@ -82,8 +85,9 @@ public class ImageContent {
         int i = 0;
 
         for (File file : f.listFiles()) {
-            Log.d("filename", file.getName());
+//            Log.d("filename", file.getName());
             if (file.isFile())
+           
                 ITEMS.add("/storage/emulated/0/Pictures/CameraSample/" + file.getName());
                 ITEM_MAP.put(Integer.toString(i), "/storage/emulated/0/Pictures/CameraSample/" + file.getName());
                 i++;

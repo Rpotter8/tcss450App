@@ -8,6 +8,8 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
+    android:clipToPadding="false"
     app:layoutManager="LinearLayoutManager"
+    app:layout_collapseParallaxMultiplier="1.0"
     tools:context="group4.tcss450.uw.edu.challengeapp.GalleryFragment"
     tools:listitem="@layout/fragment_gallery" />

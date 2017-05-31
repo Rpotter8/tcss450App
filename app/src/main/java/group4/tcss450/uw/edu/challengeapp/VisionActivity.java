@@ -99,7 +99,7 @@ public class VisionActivity extends AppCompatActivity implements GalleryFragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction =
                 fragmentManager.beginTransaction();
-        FragmentTransaction replace = fragmentTransaction.replace(R.id.vision, new GalleryFragment() );
+        FragmentTransaction replace = fragmentTransaction.replace(R.id.contentVis, new GalleryFragment() );
         fragmentTransaction.commit();
 
 
@@ -107,7 +107,9 @@ public class VisionActivity extends AppCompatActivity implements GalleryFragment
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
+
         Log.d(Integer.toString(resultCode), Integer.toString(resultCode));
         if(data != null) {
             mPhotoPath = data.getStringExtra("result");
@@ -258,6 +260,7 @@ public class VisionActivity extends AppCompatActivity implements GalleryFragment
 
                 }
 
+
             }
 
 
@@ -266,7 +269,7 @@ public class VisionActivity extends AppCompatActivity implements GalleryFragment
 
     }
 
-    private Bitmap scaleBitmapDown(Bitmap bitmap, int maxDimension) {
+    public static Bitmap scaleBitmapDown(Bitmap bitmap, int maxDimension) {
 
         int originalWidth = bitmap.getWidth();
         int originalHeight = bitmap.getHeight();
