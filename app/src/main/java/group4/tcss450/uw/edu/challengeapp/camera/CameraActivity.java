@@ -31,6 +31,7 @@ import java.util.Date;
 import java.util.List;
 
 import group4.tcss450.uw.edu.challengeapp.R;
+import group4.tcss450.uw.edu.challengeapp.VisionActivity;
 
 /**
  * Activity to handle taking a picture and handing the picture back to VisionActivity
@@ -296,7 +297,24 @@ public class CameraActivity extends AppCompatActivity {
         switch (requestCode) {
             case ACTION_TAKE_PHOTO: {
                 if (resultCode == RESULT_OK) {
+                    Log.v("CAMERA", "image ok");
                     handleBigCameraPhoto();
+                }
+                // if back btn pressed: delete created image file and go back to
+                // vision activity
+                else if (resultCode == RESULT_CANCELED) {
+                    Log.v("CAMERA", "Back button presses: result canceled");
+                    File fdelete = new File(mCurrentPhotoPath);
+                    if (fdelete.exists()) {
+                        if (fdelete.delete()) {
+                            Log.v("FILE", "deleted file");
+                        } else {
+                            Log.v("FILE", " not deleted file");
+                        }
+                    }
+                    mCurrentPhotoPath = null;
+                    Intent intent = new Intent(this, VisionActivity.class);
+                    startActivity(intent);
                 }
                 break;
             } // ACTION_TAKE_PHOTO
