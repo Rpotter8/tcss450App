@@ -11,6 +11,9 @@ import java.util.List;
 
 import group4.tcss450.uw.edu.challengeapp.R;
 
+/**
+ * Adapter class to connect Articles with UI.
+ */
 public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.MyViewHolder> {
 
     private List<Article> articleList;

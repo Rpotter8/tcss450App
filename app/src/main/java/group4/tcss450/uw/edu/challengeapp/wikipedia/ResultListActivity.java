@@ -23,6 +23,10 @@ import java.util.List;
 
 import group4.tcss450.uw.edu.challengeapp.R;
 
+/**
+ * Recycle view activity that contains a list of most appropriate
+ * results from wikipedia.
+ */
 public class ResultListActivity extends AppCompatActivity {
 
     private static final String PARTIAL_URL =
@@ -79,7 +83,10 @@ public class ResultListActivity extends AppCompatActivity {
         task.execute(PARTIAL_URL, query);
     }
 
-
+    /**
+     * Parse json returned from wikipedia API
+     * @param json - json to parse
+     */
     private void parseJson(final String json) {
         JSONArray names, headers, urls;
         String title, name, header, url;
@@ -107,7 +114,10 @@ public class ResultListActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * A helper Service Task to obtain json from wikipedia API.
+     * Json format is an array of 5 most appropriate articles.
+     */
     private class WikiListServiceTask extends AsyncTask<String, Void, String> {
 
         private static final String RETURN_FORMAT = "&limit=5&namespace=0&format=json";

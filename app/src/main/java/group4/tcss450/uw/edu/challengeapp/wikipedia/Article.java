@@ -1,5 +1,8 @@
 package group4.tcss450.uw.edu.challengeapp.wikipedia;
 
+/**
+ * A helper class to contain a short description of Wikipedia article.
+ */
 public class Article {
 
     private String title;
@@ -11,12 +14,19 @@ public class Article {
     public Article() {
     }
 
+    /**
+     * Creates new wikipedia article with parameters
+     * @param title - wikipedia title
+     * @param header - short description
+     * @param url - urt to the article
+     */
     public Article(String title, String header, String url) {
         this.title = title;
         this.header = header;
         this.url = url;
     }
 
+    // Setters and Getters below
     public void setTitle(String title) {
         this.title = title;
     }

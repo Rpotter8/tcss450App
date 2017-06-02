@@ -18,6 +18,9 @@ import java.util.Iterator;
 
 import group4.tcss450.uw.edu.challengeapp.R;
 
+/**
+ * Activity to show full wikipedia article description.
+ */
 public class WikipediaResult extends AppCompatActivity {
 
     private static final String PARTIAL_URL =
@@ -51,7 +54,10 @@ public class WikipediaResult extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * Parse full wikipedia article.
+     * @param json - full wikipedia article json.
+     */
     private void parseJSON(final String json) {
         try {
             JSONObject object = new JSONObject(json);
@@ -75,7 +81,9 @@ public class WikipediaResult extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * Helper Service Task class to obtain full article json.
+     */
     private class WikiContentServiceTask extends AsyncTask<String, Void, String> {
 
         private static final String RETURN_FORMAT = "&format=json";
